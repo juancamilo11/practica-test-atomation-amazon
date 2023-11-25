@@ -17,14 +17,6 @@ public class IndexPage {
     private By productDetailUl = By.cssSelector("ul.a-unordered-list.a-vertical.a-spacing-mini");
     private By freeShipingButton = By.xpath("//*[@id=\"p_n_is_free_shipping/10236242011\"]/span/a/span");
     private By AddToCartButton = By.cssSelector("input#add-to-cart-button");
-    private By errEmail = By.id("err-email");
-
-    private By txtPassword = By.id("password");
-    private By errPassword = By.id("err-password");
-
-    private By btnLogin = By.id("login-btn");
-    private By aRegister = By.id("a_register");
-    private By errorPopup = By.className("swal2-html-container");
     private By cartItemsCount = By.cssSelector("span#nav-cart-count");
 
 
@@ -70,46 +62,6 @@ public class IndexPage {
     public void clickOnFirstResult() {
         driver.findElements(productName).get(0).findElement(By.tagName("a")).click();
     }
-
-    public void enterPassword(String password) {
-        driver.findElement(txtPassword).sendKeys(password);
-    }
-
-    public void clickOnLogin() {
-        driver.findElement(btnLogin).click();
-    }
-
-    public void clickOnRegister() {
-        driver.findElement(aRegister).click();
-    }
-
-    public boolean checkLoginErrorPopup() {
-        return driver.findElement(By.id("login-error")).isDisplayed();
-    }
-
-    public void loginUser(String email, String password) {
-
-        driver.findElement(searchBar).sendKeys(email);
-        driver.findElement(txtPassword).sendKeys(password);
-        driver.findElement(btnLogin).click();
-    }
-
-    public String getErrorPopup() {
-        return driver.findElement(errorPopup).getText();
-    }
-
-    public String getErrorEmail() {
-        return driver.findElement(errEmail).getText();
-    }
-
-    public String getErrorPassword() {
-        return driver.findElement(errPassword).getText();
-    }
-
-    public boolean isErrorPopupDisplayed() {
-        return driver.findElement(errorPopup).isDisplayed();
-    }
-
 
     public Long getCartItemsCount() {
         return Long.valueOf(driver.findElement(cartItemsCount).getText());
